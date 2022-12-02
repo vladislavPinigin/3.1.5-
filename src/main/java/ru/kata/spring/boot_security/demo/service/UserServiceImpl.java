@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        userRepository.saveAndFlush(user);
+        userRepository.save(user);
     }
 
     @Transactional
@@ -43,18 +43,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void updateUser(Long id, User user) {
-        Optional<User> userById = userRepository.findById(id);
-        if (userById.isPresent()) {
-            User userFromRepo = userById.get();
-            userFromRepo.setId(id);
-            userFromRepo.setFirstName(user.getFirstName());
-            userFromRepo.setLastName(user.getLastName());
-            userFromRepo.setAge(user.getAge());
-            userFromRepo.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-            userRepository.save(userFromRepo);
-        } else {
-            throw new UsernameNotFoundException(String.format("User %s with %s not found", user, id));
-        }
+        user.setId(id);
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        userRepository.save(user);
     }
 
     @Override
@@ -74,10 +65,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = getUserByUsername(username);
+        User user = userRepository.getUserByUsername(username);
+
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User %s not found", username));
         }
+
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(), user.getAuthorities());
     }

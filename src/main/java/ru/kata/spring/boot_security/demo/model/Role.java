@@ -45,6 +45,10 @@ public class Role implements GrantedAuthority {
         return name;
     }
 
+    public String getNameToString() {
+        return name.replaceAll("ROLE_", "");
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -62,6 +66,7 @@ public class Role implements GrantedAuthority {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         Role role = (Role) o;
         return Objects.equals(getId(), role.getId()) &&
                 Objects.equals(getName(), role.getName()) &&
