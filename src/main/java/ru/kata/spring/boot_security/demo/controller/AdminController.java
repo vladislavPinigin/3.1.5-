@@ -12,6 +12,7 @@ import java.security.Principal;
 
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
     private static final String ADMIN_PAGE = "admin/admin-page";
     private static final String ADMIN_USER_PAGE = "admin/admin-user-page";
@@ -19,13 +20,13 @@ public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
 
-    @Autowired
+
     public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
 
-    @GetMapping(value = "/admin")
+    @GetMapping
     public String getAdminPage(Model model, Principal principal, @ModelAttribute ("user") User user) {
         Long id = userService.getUserByUsername(principal.getName()).getId();
         model.addAttribute("user", userService.getUserById(id));
