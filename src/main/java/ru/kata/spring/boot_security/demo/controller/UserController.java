@@ -26,6 +26,6 @@ public class UserController {
     public String getUserPage(Model model, Principal principal) {
         Long id = userService.getUserByUsername(principal.getName()).getId();
         model.addAttribute("user", userService.getUserById(id));
-        return USER_PAGE;
+        return "/users-page";
     }
 }

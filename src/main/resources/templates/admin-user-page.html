@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      style="height: 100%">
 
 <head>
   <meta charset="utf-8">
@@ -9,7 +10,7 @@
   <link rel="stylesheet" href="/assets/css/styles.min.css">
 </head>
 
-<body style="background: rgb(248,249,250);height: 800px;">
+<body style="background: rgb(248,249,250);height:100%;">
 <div class="row" style="width: auto;">
   <div class="col-12 col-xl-12 mt-auto" style="width: auto;">
     <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="height: 50px;background-color: #37434d;color: #ffffff;width: auto;">
@@ -27,18 +28,17 @@
     </nav>
   </div>
 </div>
-<div class="row gx-2 d-flex flex-grow-1 align-items-stretch justify-content-xl-end align-items-xl-start" style="height: auto;margin-right: 0px;margin-top: 50px;padding-top: 10px;">
-  <div class="col-2 visible" style="background: #ffffff;margin-top: 0px;height: 800px;">
-    <ul class="nav nav-tabs flex-column d-inline" style="height: auto;border-bottom-width: 0px;padding-top: 10px;background: #ffffff;margin-bottom: 0px;padding-bottom: 0px;">
-      <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
-      <li class="nav-item" style="background: var(--bs-blue);"><a class="nav-link active" href="/admin-user" style="background: var(--bs-blue);color: var(--bs-nav-tabs-link-active-bg);">User</a></li>
-
+<div class="row gx-2 d-flex flex-grow-1 align-items-stretch justify-content-xl-end align-items-xl-start" style="height:100%; margin-right: 0px;margin-top: 50px;padding-top: 10px;">
+  <div class="col-2 visible" style="background: #ffffff;margin-top: 0px;height:100%;">
+    <ul class="nav nav-tabs flex-column d-inline" style="height:100%;border-bottom-width: 0px;padding-top: 10px;background: #ffffff;margin-bottom: 0px;padding-bottom: 0px;">
+      <li class="nav-item"><a class="nav-link" th:href="@{/templates/admin-user-page}">Admin</a></li>
+      <li class="nav-item" style="background: var(--bs-blue);"><a class="nav-link active" th:href="@{/admin-user}" style="background: var(--bs-blue);color: var(--bs-nav-tabs-link-active-bg);">User</a></li>
     </ul>
   </div>
   <div class="col-9 flex-grow-1 align-self-baseline">
     <h1 style="font-size: 35px;margin-bottom: 10px;margin-top: 10px;margin-left: 20px;margin-right: 20px;">User-information page</h1>
     <p class="border rounded-0" style="padding-left: 10px;padding-top: 10px;padding-bottom: 10px;background: #f8f9fa;margin-top: 15px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px;">User page</p>
-    <div class="table-responsive border rounded-0" style="padding-bottom: 20px;">
+    <div class="table-responsive border rounded-0" style="padding-bottom: 20px; background: #ffffff;">
       <table class="table table-striped">
         <thead>
         <tr>
