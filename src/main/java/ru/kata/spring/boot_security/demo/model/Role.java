@@ -15,7 +15,7 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     private String name;
     @Transient
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
     private Set<User> users;
 
     public Role() {
